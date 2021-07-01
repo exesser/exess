@@ -49,7 +49,7 @@ jobs:
                 name: Monorepo Split of ${{ matrix.package }}
                 uses: symplify/github-action-monorepo-split@2.0
                 env:
-                    GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+                    GITHUB_TOKEN: ${{ secrets.SPLIT_ACCESS_TOKEN }}
                 with:
                     package-directory: 'src/Bundle/${{ matrix.package }}'
                     split-repository-organization: 'exesser'
@@ -65,7 +65,7 @@ jobs:
                 name: Monorepo Tagged Split of ${{ matrix.package }}
                 uses: symplify/github-action-monorepo-split@2.0
                 env:
-                    GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+                    GITHUB_TOKEN: ${{ secrets.SPLIT_ACCESS_TOKEN }}
                 with:
                     tag: ${GITHUB_REF#refs/tags/}
 

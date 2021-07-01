@@ -13,11 +13,13 @@
     },
     "autoload": {
         "psr-4": {
+            "ExEss\\Bundle\\CmsBundle\\": "src/Bundle/cms-bundle/",
             "ExEss\\Bundle\\DoctrineExtensionsBundle\\": "src/Bundle/doctrine-extensions-bundle/",
             "Exess\\": "src/"
         }
     },
     "replace": {
+        "exesser/cms-bundle": "self.version",
         "exesser/doctrine-extensions-bundle": "self.version"
     },
     "require-dev": {

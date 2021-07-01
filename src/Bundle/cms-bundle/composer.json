@@ -1,0 +1,16 @@
+{
+    "name": "exesser/cms-bundle",
+    "type": "library",
+    "license": "MIT",
+    "config": {
+        "vendor-dir": "vendor",
+        "bin-dir": "bin",
+        "discard-changes": true,
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "ExEss\\Bundle\\CmsBundle\\": "/"
+        }
+    }
+}
