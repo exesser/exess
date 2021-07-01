@@ -1,0 +1,19 @@
+{
+    "name": "exesser/doctrine-extensions-bundle",
+    "type": "library",
+    "license": "MIT",
+    "config": {
+        "vendor-dir": "vendor",
+        "bin-dir": "bin",
+        "discard-changes": true,
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "ExEss\\Bundle\\DoctrineExtensionsBundle\\": "/"
+        }
+    },
+    "require": {
+        "doctrine/doctrine-migrations-bundle": "^2 || ^3"
+    }
+}

@@ -2,11 +2,27 @@
     "name": "exesser/exess",
     "type": "library",
     "license": "MIT",
+    "require": {
+        "doctrine/doctrine-migrations-bundle": "^2 || ^3"
+    },
+    "config": {
+        "vendor-dir": "vendor",
+        "bin-dir": "bin",
+        "discard-changes": true,
+        "sort-packages": true
+    },
     "autoload": {
         "psr-4": {
+            "ExEss\\Bundle\\DoctrineExtensionsBundle\\": "src/Bundle/DoctrineExtensionsBundle/",
             "Exess\\": "src/"
         }
     },
-    "minimum-stability": "dev",
-    "require": {}
+    "replace": {
+        "exesser/doctrine-extensions-bundle": "self.version"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "symplify/monorepo-builder": "^9.3"
+    },
+    "minimum-stability": "dev"
 }
