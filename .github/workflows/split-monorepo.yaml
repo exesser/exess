@@ -16,7 +16,7 @@ jobs:
             # required for matrix of packages set
             -   uses: shivammathur/setup-php@v2
                 with:
-                    php-version: 7.4
+                    php-version: 8.0
                     coverage: none
 
             -   uses: "ramsey/composer-install@v1"
@@ -54,8 +54,8 @@ jobs:
                     package-directory: 'src/Bundle/${{ matrix.package }}'
                     split-repository-organization: 'exesser'
                     split-repository-name: '${{ matrix.package }}'
-                    user-name: "GitHub Action"
-                    user-email: "action@github.com"
+                    user-name: "kristofvc"
+                    user-email: "kristof.vancauwenbergh@gmail.com"
                     branch: "main"
 
             # with tag
@@ -72,6 +72,6 @@ jobs:
                     package-directory: 'src/Bundle/${{ matrix.package }}'
                     split-repository-organization: 'exesser'
                     split-repository-name: '${{ matrix.package }}'
-                    user-name: "GitHub Action"
-                    user-email: "action@github.com"
+                    user-name: "kristofvc"
+                    user-email: "kristof.vancauwenbergh@gmail.com"
                     branch: "main"
