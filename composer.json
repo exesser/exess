@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ExEss\\Bundle\\DoctrineExtensionsBundle\\": "src/Bundle/DoctrineExtensionsBundle/",
+            "ExEss\\Bundle\\DoctrineExtensionsBundle\\": "src/Bundle/doctrine-extensions-bundle/",
             "Exess\\": "src/"
         }
     },
