@@ -1,1 +1,9 @@
+# Editors
+.idea/
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.*.local
+/var/
 /vendor/
+###< symfony/framework-bundle ###
