@@ -1,5 +1,7 @@
 # Editors
 .idea/
+composer.lock
+bin/
 
 ###> symfony/framework-bundle ###
 /.env.local
