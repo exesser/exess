@@ -15,5 +15,7 @@
     },
     "require": {
         "doctrine/doctrine-migrations-bundle": "^2 || ^3"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
