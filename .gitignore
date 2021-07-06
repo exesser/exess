@@ -1,5 +1,6 @@
 # Editors
 .idea/
+bin/
 
 ###> symfony/framework-bundle ###
 /.env.local
