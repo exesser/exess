@@ -10,8 +10,20 @@
     },
     "autoload": {
         "psr-4": {
-            "ExEss\\Bundle\\CmsBundle\\": "/"
+            "ExEss\\Bundle\\CmsBundle\\": "./"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\CmsBundle\\": "tests/_support/",
+            "Test\\CmsBundle\\Api\\": "tests/api/",
+            "Test\\CmsBundle\\Functional\\": "tests/functional/",
+            "Test\\CmsBundle\\Unit\\": "tests/unit/"
+        }
+    },
+    "require": {
+        "ramsey/uuid": "^4.1",
+        "symfony/validator": "^5.2"
     },
     "require-dev": {
         "codeception/codeception": "^4.1",

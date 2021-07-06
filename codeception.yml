@@ -1,0 +1,8 @@
+include:
+  - src/Bundle/cms-bundle/
+
+paths:
+  log: log
+
+settings:
+  colors: true

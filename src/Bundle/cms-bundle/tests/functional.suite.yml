@@ -1,0 +1,6 @@
+actor: FunctionalTester
+modules:
+    enabled:
+        # add a framework module here
+        - \Test\CmsBundle\Helper\Functional
+    step_decorators: ~

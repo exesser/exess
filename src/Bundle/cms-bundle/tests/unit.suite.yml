@@ -1,0 +1,6 @@
+actor: UnitTester
+modules:
+    enabled:
+        - Asserts
+        - \Test\CmsBundle\Helper\AssertHelper
+    step_decorators: ~
