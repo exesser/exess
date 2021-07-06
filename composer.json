@@ -2,12 +2,6 @@
     "name": "exesser/exess",
     "type": "library",
     "license": "MIT",
-    "config": {
-        "vendor-dir": "vendor",
-        "bin-dir": "bin",
-        "discard-changes": true,
-        "sort-packages": true
-    },
     "autoload": {
         "psr-4": {
             "ExEss\\Bundle\\CmsBundle\\": "src/Bundle/cms-bundle/",
@@ -15,12 +9,18 @@
             "Exess\\": "src/"
         }
     },
-    "replace": {
-        "exesser/cms-bundle": "self.version",
-        "exesser/doctrine-extensions-bundle": "self.version"
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\CmsBundle\\": "src/Bundle/cms-bundle/tests/_support/",
+            "Test\\CmsBundle\\Api\\": "src/Bundle/cms-bundle/tests/api/",
+            "Test\\CmsBundle\\Functional\\": "src/Bundle/cms-bundle/tests/functional/",
+            "Test\\CmsBundle\\Unit\\": "src/Bundle/cms-bundle/tests/unit/"
+        }
     },
     "require": {
-        "doctrine/doctrine-migrations-bundle": "^2 || ^3"
+        "doctrine/doctrine-migrations-bundle": "^2 || ^3",
+        "ramsey/uuid": "^4.1",
+        "symfony/validator": "^5.2"
     },
     "require-dev": {
         "codeception/codeception": "^4.1",
@@ -34,6 +34,16 @@
         "codeception/module-symfony": "^2.0",
         "phpunit/phpunit": "^9.5",
         "symplify/monorepo-builder": "9.3.26"
+    },
+    "config": {
+        "vendor-dir": "vendor",
+        "bin-dir": "bin",
+        "discard-changes": true,
+        "sort-packages": true
+    },
+    "replace": {
+        "exesser/cms-bundle": "self.version",
+        "exesser/doctrine-extensions-bundle": "self.version"
     },
     "minimum-stability": "dev",
     "prefer-stable": true

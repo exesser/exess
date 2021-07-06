@@ -1,0 +1,6 @@
+actor: ApiTester
+modules:
+    enabled:
+        # add a framework module here
+        - \Test\CmsBundle\Helper\Api
+    step_decorators: ~
