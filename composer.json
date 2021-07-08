@@ -2,6 +2,7 @@
     "name": "exesser/exess",
     "type": "library",
     "license": "MIT",
+    "description": "Monorepo for the ExEss CMS bundles and components",
     "autoload": {
         "psr-4": {
             "ExEss\\Bundle\\CmsBundle\\": "src/Bundle/cms-bundle/./",
