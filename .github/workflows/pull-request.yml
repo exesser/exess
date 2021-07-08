@@ -28,7 +28,7 @@ jobs:
         run: docker-compose exec -T php composer install --prefer-dist --no-progress
 
       - name: Install dependencies of CMS bundle
-        run: docker-compose exec --workdir src/Bundle/cms-bundle -T php composer install --prefer-dist --no-progress
+        run: docker-compose exec --workdir /exesscms-api/src/Bundle/cms-bundle -T php composer install --prefer-dist --no-progress
 
       - name: Run lint check
         run: docker-compose exec -T php composer run lint
