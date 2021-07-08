@@ -16,5 +16,6 @@ class DoctrineExtensionsExtension extends Extension
             new FileLocator(__DIR__.'/../Resources/Config')
         );
         $loader->load('services.yaml');
+        $loader->load('packages/doctrine.yaml');
     }
 }
