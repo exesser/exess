@@ -2,12 +2,12 @@ parameters:
   env(DEFAULT_PERMISSIONS_DIR_MODE): null
   env(DEFAULT_PERMISSIONS_FILE_MODE): null
   env(CONFIG_CACHE_CACHE): false
+  env(APP_DEBUG): false
 
-  env_name: '%env(string:ENV_NAME)%'
-  env_type: '%env(string:ENV_TYPE)%'
   env_url: '%env(string:ENV_URL)%'
   max_upload_file_size_mb: 5
   config_cache: '%env(bool:CONFIG_CACHE_CACHE)%'
+  app_debug: '%env(bool:APP_DEBUG)%'
 
 services:
   _defaults:
@@ -15,7 +15,7 @@ services:
     bind:
       $fallbackLocale: '%default_locale%'
       $siteUrl: '%env_url%'
-      $debug: '%verbose_errors%'
+      $debug: '%app_debug%'
       $requestLogger: '@monolog.logger.request'
 
   ExEss\Bundle\CmsBundle\Component\Session\Headers:

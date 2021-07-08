@@ -22,7 +22,33 @@
         }
     },
     "require": {
+        "beberlei/doctrineextensions": "^1.2",
+        "behat/transliterator": "^1.2",
+        "doctrine/doctrine-bundle": "^2",
+        "doctrine/orm": "^2",
+        "exesser/doctrine-extensions-bundle": "*",
+        "ezyang/htmlpurifier": "^4.12",
+        "firebase/php-jwt": "^5.4",
+        "giggsey/libphonenumber-for-php": "^8",
+        "netresearch/jsonmapper": "^4.0",
+        "nyholm/psr7": "^1.4",
         "ramsey/uuid": "^4.1",
+        "sensio/framework-extra-bundle": "^6.0",
+        "symfony/config": "^5.2",
+        "symfony/console": "^5.2",
+        "symfony/dependency-injection": "^5.2",
+        "symfony/dotenv": "^5.2",
+        "symfony/expression-language": "^5.2",
+        "symfony/flex": "^1.1",
+        "symfony/http-kernel": "^5.2",
+        "symfony/monolog-bundle": "^3.7",
+        "symfony/options-resolver": "^5.2",
+        "symfony/proxy-manager-bridge": "^5.2",
+        "symfony/psr-http-message-bridge": "^2.1",
+        "symfony/security-bundle": "^5.2",
+        "symfony/security-core": "^5.2",
+        "symfony/serializer": "^5.2",
+        "symfony/translation": "^5.2",
         "symfony/validator": "^5.2"
     },
     "require-dev": {
@@ -36,6 +62,32 @@
         "codeception/module-rest": "^1.2",
         "codeception/module-symfony": "^2.0"
     },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "5.2.*"
+        }
+    },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "scripts": {
+        "init-db": [
+            "bin/console doctrine:database:drop --force --if-exists",
+            "bin/console doctrine:database:create",
+            "bin/console doctrine:migrations:migrate --no-interaction",
+            "bin/console doctrine:database:import tests/_data/sql/_fixtures.sql",
+            "bin/console doctrine:database:import tests/_data/sql/acl_actions.sql",
+            "bin/console doctrine:database:import tests/_data/sql/acl_roles_actions.sql",
+            "bin/console doctrine:database:import tests/_data/sql/securitygroups_api.sql",
+            "bin/console exess:crud:install"
+        ],
+        "test": [
+            "bin/codecept build",
+            "bin/codecept run --no-rebuild --fail-fast"
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
+    }
 }

@@ -1,6 +1,23 @@
 actor: FunctionalTester
 modules:
     enabled:
-        # add a framework module here
-        - \Test\CmsBundle\Helper\Functional
+        - Symfony: # Make sure this is before te Db module until we stop using it otherwise some functions will use Doctrine
+              app_path: tests/_support/Helper
+              environment: '%APP_ENV%'
+              kernel_class: \Test\CmsBundle\Helper\TestKernel
+        - Doctrine2:
+              depends: Symfony
+              cleanup: true
+        - \Test\CmsBundle\Helper\Module\Db
+        - \Test\CmsBundle\Helper\Module\DbHelper
+        - \Test\CmsBundle\Helper\Module\FixturesHelper
+        - \Test\CmsBundle\Helper\Module\RecordGeneratorHelper
+        - \Test\CmsBundle\Helper\Module\JsonHelper
+        - \Test\CmsBundle\Helper\Module\AssertHelper
+        - \Test\CmsBundle\Helper\Module\CleanupHelper
+        - \Test\CmsBundle\Helper\Module\AclHelper
+        - \Test\CmsBundle\Helper\Module\SymfonyHelper
+        - Asserts
+        - Filesystem
+        - Mockery
     step_decorators: ~

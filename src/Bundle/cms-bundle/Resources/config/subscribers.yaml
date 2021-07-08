@@ -1,7 +1,3 @@
-parameters:
-  env(VERBOSE_ERRORS): false
-  verbose_errors: '%env(bool:VERBOSE_ERRORS)%'
-
 services:
   _defaults:
     public: true

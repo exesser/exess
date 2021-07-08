@@ -1,0 +1,6 @@
+doctrine_migrations:
+    custom_template: "%kernel.project_dir%/../doctrine-extensions-bundle/Resources/Templates/Migration.tpl"
+    migrations_paths:
+        # namespace is arbitrary but should be different from App\Migrations
+        # as migrations classes should NOT be autoloaded
+        'ExEssCmsMigrations': '%kernel.project_dir%/migrations'

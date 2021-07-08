@@ -2,5 +2,5 @@ actor: UnitTester
 modules:
     enabled:
         - Asserts
-        - \Test\CmsBundle\Helper\AssertHelper
+        - \Test\CmsBundle\Helper\Module\AssertHelper
     step_decorators: ~

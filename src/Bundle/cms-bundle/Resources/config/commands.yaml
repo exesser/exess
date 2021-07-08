@@ -1,11 +1,12 @@
-# At the moment these commands are public since we're calling them directly,
-# but at some point in time we should be able to all make them private
+parameters:
+  exess.crud_records_path: '%kernel.project_dir%/Resources/Crud'
+
 services:
   _defaults:
     autowire: true
+    bind:
+      $crudRecordsPath: '%exess.crud_records_path%'
 
   # General CRM commands
   ExEss\Bundle\CmsBundle\Command\AbstractAdminCommand:
     abstract: true
-    calls:
-      - login: ['@security.token_storage', '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\User\DefaultUser']

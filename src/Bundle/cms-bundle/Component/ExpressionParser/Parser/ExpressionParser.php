@@ -147,10 +147,10 @@ class ExpressionParser
     private function getValue(object $entity, string $field)
     {
         $class = \get_class($entity);
-
-        $metadata = null;
-        if ($entity instanceof Proxy || $this->em->getMetadataFactory()->hasMetadataFor($class)) {
+        try {
             $metadata = $this->em->getClassMetadata($class);
+        } catch (\Exception $e) {
+            $metadata = null;
         }
 
         if ($metadata) {
