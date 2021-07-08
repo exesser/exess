@@ -1,0 +1,4 @@
+doctrine:
+    types:
+        datetime_immutable_microseconds: ExEss\Bundle\DoctrineExtensionsBundle\Type\DateTimeImmutableMicroseconds
+        enum_audit_operation: ExEss\Bundle\DoctrineExtensionsBundle\Type\AuditOperationEnumType

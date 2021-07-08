@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test\CmsBundle\Helper;
+namespace Test\CmsBundle\Helper\Module;
 
 use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
 use Test\CmsBundle\Helper\Constraint\ArraySubset;

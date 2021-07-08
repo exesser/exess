@@ -53,7 +53,13 @@ class SelectWithSearchService
             ];
         }
 
-        if ($this->em->getMetadataFactory()->hasMetadataFor($selectWithSearch->getBaseObject())) {
+        try {
+            $metadata = $this->em->getClassMetadata($selectWithSearch->getBaseObject());
+        } catch (\Exception $e) {
+            $metadata = null;
+        }
+
+        if ($metadata) {
             $qb = $this->getQueryBuilder($selectWithSearch, $model, $keys, $query);
             $qb->setFirstResult(($page - 1) * $pageSize);
             $qb->setMaxResults($pageSize);
@@ -112,7 +118,13 @@ class SelectWithSearchService
         }
         $selectWithSearch = $this->getSelectWithSearchRecord($name, $baseObject);
 
-        if ($this->em->getMetadataFactory()->hasMetadataFor($selectWithSearch->getBaseObject())) {
+        try {
+            $metadata = $this->em->getClassMetadata($selectWithSearch->getBaseObject());
+        } catch (\Exception $e) {
+            $metadata = null;
+        }
+
+        if ($metadata) {
             $qb = $this->getQueryBuilder($selectWithSearch, $model, $keys);
 
             return $this->generateRows(

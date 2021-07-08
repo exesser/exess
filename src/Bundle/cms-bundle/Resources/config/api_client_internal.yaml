@@ -16,8 +16,10 @@ services:
 
   ExEss\Bundle\CmsBundle\Component\Client\Event\Listeners\EnhanceHeadersSubscriber:
     autowire: true
+    lazy: true
     tags: [{ name: 'crm.subscriber', key: 'ExEss\Bundle\CmsBundle\Component\Client\Event\Listeners\EnhanceHeadersSubscriber' }]
 
   ExEss\Bundle\CmsBundle\Component\Client\Event\Listeners\LogSubscriber:
     autowire: true
+    lazy: true
     tags: [{ name: 'crm.subscriber', key: 'ExEss\Bundle\CmsBundle\Component\Client\Event\Listeners\LogSubscriber' }]

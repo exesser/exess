@@ -1,0 +1,18 @@
+monolog:
+    channels:
+        - !php/const \ExEss\Bundle\CmsBundle\Logger\Logger::CHANNEL_DEFAULT
+        - !php/const \ExEss\Bundle\CmsBundle\Logger\Logger::CHANNEL_AUTHENTICATION
+        - !php/const \ExEss\Bundle\CmsBundle\Logger\Logger::CHANNEL_REQUEST
+        - 'client-request'
+        - 'client-response'
+        - 'client-exception'
+    handlers:
+        main:
+            type: rotating_file
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            level: info
+            formatter: monolog.formatter.dashed
+        test:
+            type: test
+            level: info
+            formatter: monolog.formatter.dashed

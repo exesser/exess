@@ -1,12 +1,27 @@
 namespace: Test\CmsBundle
+params:
+    - .env
+    - .env.test
 paths:
     tests: tests
     output: tests/_output
     data: tests/_data
     support: tests/_support
     envs: tests/_envs
-bootstrap: _bootstrap.php
 actor_suffix: Tester
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
+
+modules:
+    config:
+        \Test\CmsBundle\Helper\Module\Db:
+            dsn: 'mysql:host=%DBCONFIG_DB_HOST_NAME%;dbname=%DBCONFIG_DB_NAME%;charset=utf8'
+            user: '%DBCONFIG_DB_USER_NAME%'
+            password: '%DBCONFIG_DB_PASSWORD%'
+            # populate: whether the the dump should be loaded before the test suite is started
+            populate: true
+            populator: 'APP_ENV=test php /usr/local/bin/composer run init-db'
+            # whether the dump should be reloaded before each test
+            cleanup: false
+            reconnect: true

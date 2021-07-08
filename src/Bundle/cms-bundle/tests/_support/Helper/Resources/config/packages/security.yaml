@@ -1,0 +1,46 @@
+security:
+    enable_authenticator_manager: true
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    encoders:
+        ExEss\Bundle\CmsBundle\Entity\User:
+            algorithm: auto
+
+    providers:
+        doctrine_user_provider:
+            entity:
+                class: ExEss\Bundle\CmsBundle\Entity\User
+                property: userName
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        login:
+            pattern:  ^/Api/login
+            provider: doctrine_user_provider
+            #login_throttling:
+            #    max_attempts: 5
+            json_login:
+                check_path: exess_cms_login
+                success_handler: ExEss\Bundle\CmsBundle\Security\JsonLoginAuthenticator
+        api:
+            stateless: true
+            pattern: ^/Api
+            provider: doctrine_user_provider
+            entry_point: ExEss\Bundle\CmsBundle\Security\JwtTokenAuthenticator
+            guard:
+                authenticators:
+                    - ExEss\Bundle\CmsBundle\Security\JwtTokenAuthenticator
+            logout:
+                path: exess_cms_logout
+
+    access_control:
+        - { path: ^/Api/login, roles: PUBLIC_ACCESS }
+        - { path: ^/Api/V8_Custom/check/ping, roles: PUBLIC_ACCESS }
+        - { path: ^/Api/V8_Custom/check/health, roles: PUBLIC_ACCESS }
+        - { path: ^/Api, roles: PUBLIC_ACCESS, methods: [OPTIONS] }
+        - { path: ^/Api, roles: ROLE_USER }

@@ -2,6 +2,8 @@
 
 namespace Test\CmsBundle;
 
+use ExEss\Bundle\CmsBundle\Entity\User;
+
 /**
  * Inherited Methods
  * @method void wantToTest($text)
@@ -24,4 +26,15 @@ class FunctionalTester extends \Codeception\Actor
     /**
      * Define custom actions here
      */
+    public function createUserAndLogin(): string
+    {
+        $user = new User();
+        $user->setCreatedBy('1');
+
+        $this->grabService('doctrine.orm.entity_manager')->persist($user);
+
+        $this->loginAsUser($user);
+
+        return $user->getId();
+    }
 }

@@ -13,10 +13,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         __DIR__ . '/src/Bundle',
     ]);
 
-    // for "merge" command
-    $parameters->set(Option::DATA_TO_APPEND, [
-        ComposerJsonSection::REQUIRE_DEV => [
-            'phpunit/phpunit' => '^9.5',
+    $parameters->set(Option::DATA_TO_REMOVE, [
+        ComposerJsonSection::REQUIRE => [
+            'exesser/doctrine-extensions-bundle' => '*',
         ],
     ]);
 };
