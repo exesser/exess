@@ -34,7 +34,7 @@ class InstallCommand extends AbstractAdminCommand
     {
         $this->io->title("ExEss CRUD install");
 
-        $this->connection->transactional(function (Connection $connection) {
+        $this->connection->transactional(function (Connection $connection): void {
             foreach ($this->generateSql() as $table => $queries) {
                 $this->io->text("Importing " . \count($queries) . " records into $table");
                 foreach ($queries as $query) {

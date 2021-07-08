@@ -25,7 +25,7 @@ class TestKernel extends Kernel
             new \ExEss\Bundle\DoctrineExtensionsBundle\DoctrineExtensionsBundle(),
         ];
     }
-    
+
     protected function getContainerBaseClass(): string
     {
         return Container::class;
@@ -42,7 +42,6 @@ class TestKernel extends Kernel
     protected function configureRoutes(RoutingConfigurator $routes): void
     {
         $confDir = $this->getProjectDir().'/config';
-        //
         // $routes->import($confDir.'/{routes}/'.$this->environment.'/*'.self::CONFIG_EXTS, 'glob');
         // $routes->import($confDir.'/{routes}/*'.self::CONFIG_EXTS, 'glob');
         // $routes->import($confDir.'/{routes}'.self::CONFIG_EXTS, 'glob');

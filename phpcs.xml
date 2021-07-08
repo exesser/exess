@@ -1,9 +1,13 @@
 <?xml version="1.0"?>
-<ruleset name="Our_Coding_standard">
+<ruleset name="ExEss_Coding_standard">
     <description>The coding standard for all ExEss projects.</description>
 
     <!-- Custom project specific config -->
-    {{project.custom}}
+
+    <!-- Exclude cms specific directories -->
+    <exclude-pattern>/exesscms-api/(\.tmp_staging/)?(var|vendor)/*.php</exclude-pattern>
+    <exclude-pattern>/exesscms-api/(\.tmp_staging/)?src/Bundle/(cms-bundle|doctrine-extensions-bundle)/(var|vendor)/*.php</exclude-pattern>
+
     <!-- End custom project specific config -->
 
     <!-- Include most of the PSR2 standard -->
@@ -69,7 +73,7 @@
     </rule>
 
     <!-- Custom rules -->
-    <rule ref="{{custom.sniffs}}" />
+    <rule ref="/exesscms-api/src/Bundle/cms-bundle/Component/PhpCS/Sniffs/" />
 
     <!-- Exclude some rules for tests -->
     <rule ref="PSR2.Methods.MethodDeclaration.Underscore">
