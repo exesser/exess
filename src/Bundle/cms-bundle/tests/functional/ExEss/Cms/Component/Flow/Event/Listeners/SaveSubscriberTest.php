@@ -10,7 +10,6 @@ use ExEss\Bundle\CmsBundle\Component\Flow\Handler\FlowData;
 use ExEss\Bundle\CmsBundle\Component\Flow\Request\FlowAction;
 use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
 use ExEss\Bundle\CmsBundle\Component\Flow\SaveFlow;
-use ExEss\Bundle\CmsBundle\Entity\User;
 use Test\CmsBundle\Helper\Testcase\FunctionalTestCase;
 
 class SaveSubscriberTest extends FunctionalTestCase
