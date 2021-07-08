@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    autoconfigure: true
+
+  ExEss\Command\SetupGitHooksCommand: ~
+#  ExEss\Command\:
+#    public: true
+#    autowire: true
+#    autoconfigure: true
+#    resource: "Command/"

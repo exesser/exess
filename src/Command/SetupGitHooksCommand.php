@@ -1,23 +1,23 @@
 <?php declare(strict_types=1);
 
-namespace ExEss\Bundle\CmsBundle\Component\PhpCS\Command;
+namespace ExEss\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
 class SetupGitHooksCommand extends Command
 {
-    use FileHandlingTrait;
-
     /**
      * @var string
      */
     // phpcs:ignore SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint
-    protected static $defaultName = 'setup:git-hooks';
+    protected static $defaultName = 'exess:setup:git-hooks';
 
     protected function configure(): void
     {
@@ -48,7 +48,7 @@ class SetupGitHooksCommand extends Command
     private function setup(string $root): void
     {
         /** @var SplFileInfo $file */
-        foreach ($this->getFinder()->files()->in(__DIR__ . '/../Template/hooks') as $file) {
+        foreach ($this->getFinder()->files()->in(__DIR__ . '/Template/hooks') as $file) {
             $this->getFileSystem()->remove($root . '/.git/hooks/' . $file->getFilename());
             $this->getFileSystem()->copy(
                 $file->getRealPath(),
@@ -57,5 +57,15 @@ class SetupGitHooksCommand extends Command
             );
             $this->getFileSystem()->chmod([$root . '/.git/hooks/' . $file->getFilename()], 0755);
         }
+    }
+
+    private function getFileSystem(): Filesystem
+    {
+        return new Filesystem();
+    }
+
+    private function getFinder(): Finder
+    {
+        return new Finder();
     }
 }
