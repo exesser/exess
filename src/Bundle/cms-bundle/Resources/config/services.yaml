@@ -177,12 +177,6 @@ services:
     parent: ExEss\Bundle\CmsBundle\Command\AbstractAdminCommand
     resource: "Command/"
 
-  ExEss\Bundle\CmsBundle\Component\PhpCS\Command\:
-    public: true
-    autowire: true
-    autoconfigure: true
-    resource: "Component/PhpCS/Command/"
-
   ExEss\Bundle\CmsBundle\Repository\:
     autowire: true
     autoconfigure: true

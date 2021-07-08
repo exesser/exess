@@ -6,7 +6,7 @@
         "psr-4": {
             "ExEss\\Bundle\\CmsBundle\\": "src/Bundle/cms-bundle/./",
             "ExEss\\Bundle\\DoctrineExtensionsBundle\\": "src/Bundle/doctrine-extensions-bundle/",
-            "Exess\\": "src/"
+            "ExEss\\": "src/"
         }
     },
     "autoload-dev": {
@@ -80,7 +80,7 @@
     },
     "scripts": {
         "set-up-hooks": [
-            "cd src/Bundle/cms-bundle; bin/console setup:git-hooks --root=/exesscms-api --ansi"
+            "bin/console exess:setup:git-hooks --ansi"
         ],
         "set-up": [
             "@set-up-hooks"
