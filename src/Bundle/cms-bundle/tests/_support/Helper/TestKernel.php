@@ -23,6 +23,7 @@ class TestKernel extends Kernel
             new \ExEss\Bundle\CmsBundle\CmsBundle(),
             new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new \ExEss\Bundle\DoctrineExtensionsBundle\DoctrineExtensionsBundle(),
+            new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
         ];
     }
 
@@ -33,17 +34,16 @@ class TestKernel extends Kernel
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
-        $confDir = __DIR__;
+        $confDir = __DIR__ . '/Resources/config/';
 
-        $loader->load($confDir . '/Resources/config/*.yaml', 'glob');
-        $loader->load($confDir . '/Resources/config/packages/*.yaml', 'glob');
+        $loader->load($confDir . '*.yaml', 'glob');
+        $loader->load($confDir . 'packages/*.yaml', 'glob');
     }
 
     protected function configureRoutes(RoutingConfigurator $routes): void
     {
-        $confDir = $this->getProjectDir().'/config';
-        // $routes->import($confDir.'/{routes}/'.$this->environment.'/*'.self::CONFIG_EXTS, 'glob');
-        // $routes->import($confDir.'/{routes}/*'.self::CONFIG_EXTS, 'glob');
-        // $routes->import($confDir.'/{routes}'.self::CONFIG_EXTS, 'glob');
+        $confDir = __DIR__ . '/Resources/config/';
+
+        $routes->import($confDir.'/routes/*.yaml', 'glob');
     }
 }

@@ -5,9 +5,9 @@
     "description": "Monorepo for the ExEss CMS bundles and components",
     "autoload": {
         "psr-4": {
+            "ExEss\\": "src/",
             "ExEss\\Bundle\\CmsBundle\\": "src/Bundle/cms-bundle/./",
-            "ExEss\\Bundle\\DoctrineExtensionsBundle\\": "src/Bundle/doctrine-extensions-bundle/",
-            "ExEss\\": "src/"
+            "ExEss\\Bundle\\DoctrineExtensionsBundle\\": "src/Bundle/doctrine-extensions-bundle/"
         }
     },
     "autoload-dev": {

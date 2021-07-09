@@ -84,7 +84,9 @@
         ],
         "test": [
             "bin/codecept build",
-            "bin/codecept run --no-rebuild --fail-fast"
+            "bin/codecept run api --no-rebuild --fail-fast",
+            "bin/codecept run functional --no-rebuild --fail-fast",
+            "bin/codecept run unit --no-rebuild --fail-fast"
         ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
