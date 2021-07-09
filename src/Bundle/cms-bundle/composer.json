@@ -2,6 +2,7 @@
     "name": "exesser/cms-bundle",
     "type": "library",
     "license": "MIT",
+    "description": "Core ExEss CMS bundle",
     "config": {
         "vendor-dir": "vendor",
         "bin-dir": "bin",

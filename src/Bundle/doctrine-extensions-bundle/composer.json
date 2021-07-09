@@ -2,6 +2,7 @@
     "name": "exesser/doctrine-extensions-bundle",
     "type": "library",
     "license": "MIT",
+    "description": "ExEss Doctrine extensions bundle",
     "config": {
         "vendor-dir": "vendor",
         "bin-dir": "bin",

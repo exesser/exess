@@ -1,0 +1,58 @@
+name: Exess pull-request build
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: docker-compose -f docker-compose.backend.yml pull
+
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
+        with:
+          key: exesscms-pr-build-cache-backend-{hash}
+          restore-keys: exesscms-pr-build-cache-backend-
+
+      - name: Setup docker containers
+        run: docker-compose -f docker-compose.backend.yml up -d --build
+
+      - name: Validate composer.json and composer.lock
+        run: docker-compose exec -T php composer validate
+
+      - name: Install global dependencies
+        run: docker-compose exec -T php composer install --prefer-dist --no-progress
+
+      - name: Run lint check
+        run: docker-compose exec -T php composer run lint
+
+      - name: CMS bundle - Install dependencies
+        run: docker-compose exec --workdir /exesscms-api/src/Bundle/cms-bundle -T php composer install --prefer-dist --no-progress
+
+      - name: Run test suites
+        run: docker-compose exec -T php composer run test
+
+      - run: docker-compose -f docker-compose.backend.yml down --remove-orphans
+
+#  frontend:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - run: docker-compose -f docker-compose.frontend.yml pull
+#
+#      - uses: satackey/action-docker-layer-caching@v0.0.11
+#        continue-on-error: true
+#        with:
+#          key: exesscms-pr-build-cache-frontend-{hash}
+#          restore-keys: exesscms-pr-build-cache-frontend-
+#
+#      - name: Setup frontend docker containers
+#        run: docker-compose -f docker-compose.frontend.yml up -d --build
+#
+#      - name: Run frontend tests
+#        run: docker-compose exec -T node npm test
