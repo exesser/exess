@@ -90,7 +90,7 @@
         "post-update-cmd": "@set-up",
         "lint": [
             "bin/console lint:yaml config .github docker-compose*.yml --parse-tags --ansi --no-interaction",
-            "bin/phpcs -s --standard=phpcs.xml --extensions=php . --colors"
+            "bin/phpcs -s --standard=phpcs.xml --extensions=php . --colors -p"
         ],
         "init-db": [
             "cd src/Bundle/cms-bundle; composer init-db"

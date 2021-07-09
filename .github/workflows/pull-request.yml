@@ -33,7 +33,7 @@ jobs:
       - name: CMS bundle - Install dependencies
         run: docker-compose exec --workdir /exesscms-api/src/Bundle/cms-bundle -T php composer install --prefer-dist --no-progress
 
-      - name: CMS bundle = Run test suite
+      - name: CMS bundle - Run test suite
         run: docker-compose exec --workdir /exesscms-api/src/Bundle/cms-bundle -T php composer run test
 
       - run: docker-compose -f docker-compose.build.yml down --remove-orphans
