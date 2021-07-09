@@ -1,0 +1,4 @@
+sensio_framework_extra:
+    router:
+        # avoids deprecation warnings, as this now part of the framework bundle
+        annotations: false
