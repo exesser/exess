@@ -30,7 +30,7 @@ do
 done < <(git diff --cached --name-only --diff-filter=AM)
 
 # Second construct the phpcs command.
-command=$(echo "${phpcsPath} --report=full --extensions=php --standard=${codingStandard} ${stagedFiles[@]}")
+command=$(echo "${phpcsPath} -v --report=full --extensions=php --standard=${codingStandard} ${stagedFiles[@]}")
 
 # Fourth run the SSH command and capture the results
 results=$(docker-compose exec -T php $command)

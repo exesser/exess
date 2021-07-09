@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: docker-compose -f docker-compose.build.yml pull
+      - run: docker-compose -f docker-compose.backend.yml pull
 
       - uses: satackey/action-docker-layer-caching@v0.0.11
         continue-on-error: true
@@ -19,7 +19,7 @@ jobs:
           restore-keys: exesscms-pr-build-cache-backend-
 
       - name: Setup docker containers
-        run: docker-compose -f docker-compose.build.yml up -d --build
+        run: docker-compose -f docker-compose.backend.yml up -d --build
 
       - name: Validate composer.json and composer.lock
         run: docker-compose exec -T php composer validate
@@ -36,7 +36,7 @@ jobs:
       - name: Run test suites
         run: docker-compose exec -T php composer run test
 
-      - run: docker-compose -f docker-compose.build.yml down --remove-orphans
+      - run: docker-compose -f docker-compose.backend.yml down --remove-orphans
 
 #  frontend:
 #    runs-on: ubuntu-latest
