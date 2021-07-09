@@ -20,7 +20,7 @@ class DoctrineExtensionsExtension extends Extension implements PrependExtensionI
         $loader->load('services.yaml');
     }
 
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $bundles = $container->getParameter('kernel.bundles');
         if (!isset($bundles['DoctrineBundle'])) {
