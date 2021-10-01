@@ -37,22 +37,3 @@ jobs:
         run: docker-compose exec -T php composer run test
 
       - run: docker-compose -f docker-compose.backend.yml down --remove-orphans
-
-#  frontend:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v2
-#
-#      - run: docker-compose -f docker-compose.frontend.yml pull
-#
-#      - uses: satackey/action-docker-layer-caching@v0.0.11
-#        continue-on-error: true
-#        with:
-#          key: exesscms-pr-build-cache-frontend-{hash}
-#          restore-keys: exesscms-pr-build-cache-frontend-
-#
-#      - name: Setup frontend docker containers
-#        run: docker-compose -f docker-compose.frontend.yml up -d --build
-#
-#      - name: Run frontend tests
-#        run: docker-compose exec -T node npm test
