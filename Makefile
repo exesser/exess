@@ -1,24 +1,19 @@
-.DEFAULT_GOAL := up
+.DEFAULT_GOAL := init
+
+name?=exess
 
 up:
-# 	@docker volume create node_modules
-# 	@docker volume create bower_components
-	@docker-compose -f docker-compose.yml up -d --build
+	@docker-compose -p $(name) -f docker-compose.yml up -d --build
 
 restart:
-	@docker-compose -f docker-compose.yml restart
-
-up-front:
-	@docker-compose -f docker-compose.frontend.yml up -d --build
+	@docker-compose -p $(name) -f docker-compose.yml restart
 
 down:
-# 	@docker-compose -f docker-compose.yml -f docker-compose.frontend.yml down --remove-orphans --volumes
-	@docker-compose -f docker-compose.yml down --remove-orphans --volumes
+	@docker-compose -p $(name) -f docker-compose.yml down --remove-orphans --volumes
 
 init:
 	@make up
 	@make composer
-# 	@make init-db
 
 env?=dev
 init-db:
@@ -55,9 +50,6 @@ php-sh:
 
 php-sh-debug:
 	@docker-compose exec php-debug /bin/sh
-
-front-test:
-	@docker-compose exec -T node npm test
 
 cache-flush:
 	@docker-compose exec -T php bin/console nova:cache:clear
