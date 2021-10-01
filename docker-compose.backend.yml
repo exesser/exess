@@ -18,8 +18,3 @@ services:
       service: php
     links:
       - mysql-test
-
-#  webserver:
-#    extends:
-#      file: docker-compose.yml
-#      service: webserver
