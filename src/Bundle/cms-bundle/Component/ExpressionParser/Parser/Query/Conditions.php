@@ -16,9 +16,6 @@ class Conditions
 
     private string $order = self::DEFAULT_ORDER;
 
-    /**
-     * @var ?int
-     */
     private ?int $limit = 1;
 
     public function __construct(string $relation)
