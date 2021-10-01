@@ -36,20 +36,17 @@ test:
 	@docker-compose exec -T php composer run test
 
 test-debug:
-	@docker-compose exec -T php-debug composer run test
+	@docker-compose exec -T php XDEBUG_TRIGGER=1 composer run test
 
 suite?=unit
 codecept:
 	@docker-compose exec -T php bin/codecept run $(suite)
 
 codecept-debug:
-	@docker-compose exec -T php-debug bin/codecept run $(suite)
+	@docker-compose exec -T php XDEBUG_TRIGGER=1 bin/codecept run $(suite)
 
 php-sh:
 	@docker-compose exec php /bin/sh
-
-php-sh-debug:
-	@docker-compose exec php-debug /bin/sh
 
 cache-flush:
 	@docker-compose exec -T php bin/console nova:cache:clear

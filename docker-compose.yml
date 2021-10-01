@@ -22,20 +22,12 @@ services:
       - "3416:3306"
 
   php:
-    build: docker/php
-    container_name: exess-cms-php
-    working_dir: /exesscms-api
-    volumes:
-      - .:/exesscms-api
-      - ./docker/php/overrides.ini:/usr/local/etc/php/conf.d/zz-overrides.ini
-
-  php-debug:
-    extends:
-      service: php
-    container_name: exess-cms-php-debug
-    build:
+    build: 
+      context: docker/php
       args:
           - XDEBUG=1
+    container_name: exess-cms-php
+    working_dir: /exesscms-api
     volumes:
       - .:/exesscms-api
       - ./docker/php/overrides.ini:/usr/local/etc/php/conf.d/zz-overrides.ini
